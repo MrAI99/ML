@@ -1,0 +1,13 @@
+def optimize_production(agent, environment, nb_steps=1000):
+    state = environment.reset()
+    total_reward = 0
+
+    for _ in range(nb_steps):
+        action = agent.forward(state)  # L'agent choisit l'action optimale
+        state, reward, done, _ = environment.step(action)
+        total_reward += reward
+
+    return total_reward
+
+optimized_reward = optimize_production(trained_agent, env)
+print("Optimized production reward:", optimized_reward)
